@@ -11,12 +11,14 @@ populacao = [
 
 serie = pd.Series(populacao)
 
+#Medidas de dispersão
 print("MEDIDAS DE TENDÊNCIA CENTRAL")
 print("Média:", serie.mean())
 print("Mediana:", serie.median())
 print("Moda:")
 print(serie.mode())
 
+# Coeficiente de variação em porcentagem
 print("\nMEDIDAS DE DISPERSÃO")
 print("Máximo:", serie.max())
 print("Mínimo:", serie.min())
@@ -26,5 +28,6 @@ print("Desvio Padrão:", serie.std())
 print("Coeficiente de Variação (%):",
       (serie.std()/serie.mean())*100)
 
+# MEDIDAS SEPARATRIZES
 print("\nQUARTIS")
 print(serie.quantile([0.25,0.50,0.75]))

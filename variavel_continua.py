@@ -8,24 +8,33 @@ densidade = [
 819.0,241.0,203.0,1770.0,518.0,3500.0
 ]
 
+# Classes definidas manualmente
+classes = [0, 2500, 5000, 7500, 10000, 13000]
+
 freq = pd.cut(
     densidade,
-    bins=6
-).value_counts().sort_index()
-
-resultado = pd.DataFrame({
-    'Classe': freq.index.astype(str),
-    'Freq. Absoluta': freq.values
-})
-
-resultado['Freq. Relativa (%)'] = (
-    resultado['Freq. Absoluta']
-    / resultado['Freq. Absoluta'].sum()
-    * 100
-).round(2)
-
-resultado['Freq. Acumulada'] = (
-    resultado['Freq. Absoluta'].cumsum()
+    bins=classes,
+    include_lowest=True
 )
 
-print(resultado)
+freq_abs = freq.value_counts().sort_index()
+
+tabela = pd.DataFrame({
+    "Classe": freq_abs.index.astype(str),
+    "Freq. Absoluta": freq_abs.values
+})
+
+tabela["Freq. Relativa (%)"] = (
+    tabela["Freq. Absoluta"] /
+    tabela["Freq. Absoluta"].sum() * 100
+).round(2)
+
+tabela["Freq. Acumulada"] = (
+    tabela["Freq. Absoluta"].cumsum()
+)
+
+tabela["Freq. Relativa Acumulada (%)"] = (
+    tabela["Freq. Relativa (%)"].cumsum()
+).round(2)
+
+print(tabela)

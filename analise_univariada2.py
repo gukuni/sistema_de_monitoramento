@@ -9,13 +9,13 @@ densidade = [
 ]
 
 serie = pd.Series(densidade)
-
+# Medidas de tendência central
 print("MEDIDAS DE TENDÊNCIA CENTRAL")
 print("Média:", serie.mean())
 print("Mediana:", serie.median())
 print("Moda:")
 print(serie.mode())
-
+#Medida de dispersão
 print("\nMEDIDAS DE DISPERSÃO")
 print("Máximo:", serie.max())
 print("Mínimo:", serie.min())
@@ -25,5 +25,6 @@ print("Desvio Padrão:", serie.std())
 print("Coeficiente de Variação (%):",
       (serie.std()/serie.mean())*100)
 
+#Medidas separatrizes
 print("\nQUARTIS")
 print(serie.quantile([0.25,0.50,0.75]))
